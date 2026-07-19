@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if(localStorage.getItem('codice-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Codice Solutions — Custom Software, Web & App Development, Automation Engineering</title>
@@ -136,6 +137,51 @@
   --ease: cubic-bezier(.16,.84,.32,1);
   --ease-soft: cubic-bezier(.22,.61,.36,1);
 }
+
+/* ============ LIGHT MODE THEME OVERRIDES ============ */
+html[data-theme="light"]{
+  --void: #f5f6fa;
+  --panel: #ffffff;
+  --panel-2: #eef1f7;
+  --panel-3: #e3e7f0;
+  --ink: #10131c;
+  --muted: #4b5468;
+  --muted-2: #6b7690;
+  --blue: #3b6bff;
+  --blue-glow: #2e56d6;
+  --blue-deep: #dbe5ff;
+  --cyan: #2f6fe0;
+  --line: rgba(16,19,28,0.09);
+  --line-2: rgba(16,19,28,0.16);
+}
+html[data-theme="light"] header .wrap{ background:rgba(255,255,255,0.6); }
+html[data-theme="light"] header.scrolled .wrap{ background:rgba(255,255,255,0.85); }
+html[data-theme="light"] .brand-logo-frame{ background:#ffffff; border-color:rgba(16,19,28,0.12); }
+html[data-theme="light"] .modal-backdrop{ background:rgba(230,233,240,0.85); }
+html[data-theme="light"] .modal{ background:linear-gradient(165deg, #ffffff, #eef1f7); }
+html[data-theme="light"] .chat-panel{ background:linear-gradient(165deg,#ffffff80,#eef1f7); }
+html[data-theme="light"] .chat-msg.bot{ background:rgba(16,19,28,0.05); }
+html[data-theme="light"] .modal-close{ background:rgba(16,19,28,0.04); }
+html[data-theme="light"] .offer-more{ background:none; }
+html[data-theme="light"] .field input[type="range"]{ background:rgba(16,19,28,0.08); }
+html, body, header .wrap, .offer-card, .d-card, .modal, .chat-panel, .faq-item{
+  transition:background .5s var(--ease-soft), background-color .5s var(--ease-soft), border-color .5s var(--ease-soft), color .5s var(--ease-soft);
+}
+
+.theme-toggle{
+  display:flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:999px; flex:0 0 auto;
+  border:1px solid var(--line-2); background:rgba(255,255,255,0.03);
+  color:var(--ink); margin-right:6px;
+  transition:border-color .3s ease, background .3s ease, transform .3s var(--ease);
+}
+.theme-toggle:hover{ border-color:var(--blue-glow); transform:translateY(-2px); }
+.theme-toggle svg{ width:17px; height:17px; }
+.theme-toggle .icon-moon{ display:block; }
+.theme-toggle .icon-sun{ display:none; }
+html[data-theme="light"] .theme-toggle .icon-moon{ display:none; }
+html[data-theme="light"] .theme-toggle .icon-sun{ display:block; }
+
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; background:var(--void); height: 100%; }
@@ -859,6 +905,10 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       <a href="#faq">FAQ</a>
       <a href="#inquiry">Contact</a>
     </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
     <a href="#inquiry" class="header-cta pulse"><span class="hc-text">Start a project</span><span class="hc-arrow">→</span></a>
   </div>
 </header>
@@ -897,7 +947,7 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
 
     <div class="hero-copy">
       <div class="eyebrow">Enterprise Intelligence Studio</div>
-      <h1 class="headline">We engineer<br>systems that<br><em>perform</em>.</h1>
+      <h1 class="headline">We engineer<br>systems that<br><em>perform</em></h1>
       <p class="hook">Codice Solutions brings state-of-the-art computational infrastructure, bespoke application builds, and performance automation setups directly into your core business operations.</p>
       <div class="hero-actions">
         <a href="#inquiry" class="btn-primary">Consultation <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H13M13 6L8 1M13 6L8 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -1744,6 +1794,25 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
         formResponse.textContent = 'Submission error. Please verify endpoints or retry.';
       } finally {
         submitBtn.disabled = false;
+      }
+    });
+  }
+
+  // Dark / Light mode toggle
+  (function themeInit(){
+    const saved = localStorage.getItem('codice-theme');
+    if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  })();
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('codice-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('codice-theme', 'light');
       }
     });
   }
