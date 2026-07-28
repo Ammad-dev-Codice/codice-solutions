@@ -520,6 +520,10 @@ section{ position:relative; padding:150px 0; }
 .offer-card:hover::before{ opacity:1; }
 .offer-idx{ font-family:var(--mono); font-size:12px; color:var(--muted-2); letter-spacing:2px; }
 .offer-icon{ width:44px; height:44px; margin:20px 0 22px; border-radius:12px; background:rgba(59,107,255,0.12); border:1px solid rgba(110,161,255,0.25); display:flex; align-items:center; justify-content:center; color:var(--blue-glow); }
+.offer-icon.icon-audit{ background:rgba(52,211,153,0.14); border-color:rgba(52,211,153,0.35); color:#34d399; }
+.offer-icon.icon-ai{ background:rgba(192,132,252,0.14); border-color:rgba(192,132,252,0.35); color:#c084fc; }
+.offer-icon.icon-ecom{ background:rgba(251,146,60,0.14); border-color:rgba(251,146,60,0.35); color:#fb923c; }
+.offer-icon.icon-apps{ background:rgba(96,165,250,0.14); border-color:rgba(96,165,250,0.35); color:#60a5fa; }
 .offer-title{ font-family:var(--serif); font-size:24px; font-weight:500; margin-bottom:12px; }
 .offer-text{ color:var(--muted); font-size:14px; line-height:1.65; margin-bottom:26px; min-height:64px; }
 .offer-more{
@@ -880,6 +884,61 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
 }
 .chat-send:hover{ background:var(--blue-glow); color:#04070f; }
 @media (max-width:480px){ .chat-panel{ width:calc(100vw - 40px); right:20px; bottom:90px; } .chat-launcher{ right:20px; } }
+
+/* ============ ADDED: REAL CASE STUDIES GRID ============ */
+.cs-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;
+}
+.cs-card{
+  position:relative; border-radius:22px; overflow:hidden;
+  background:linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015));
+  border:1px solid var(--line-2);
+  backdrop-filter:blur(22px) saturate(150%);
+  -webkit-backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:0 20px 50px rgba(3,10,30,0.35);
+  transition:transform .5s var(--ease-soft), border-color .4s ease, box-shadow .5s ease;
+  display:flex; flex-direction:column;
+}
+.cs-card:hover{ transform:translateY(-8px); border-color:rgba(110,161,255,0.4); box-shadow:0 30px 70px rgba(3,10,30,0.55); }
+.cs-media{ position:relative; height:260px; overflow:hidden; }
+.cs-media img{ width:100%; height:100%; object-fit:cover; filter:saturate(0.95) brightness(0.82); transform:scale(1.04); transition:transform .7s var(--ease); }
+.cs-card:hover .cs-media img{ transform:scale(1.12); }
+.cs-media video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; filter:saturate(0.95) brightness(0.82); transform:scale(1.04); transition:transform .7s var(--ease); }
+.cs-card:hover .cs-media video{ transform:scale(1.12); }
+.cs-media::after{ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(5,6,10,0.05), rgba(5,6,10,0.55)); }
+.cs-stack{ position:absolute; top:16px; left:16px; display:flex; gap:6px; flex-wrap:wrap; z-index:2; }
+.cs-stack span{ font-family:var(--mono); font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; padding:5px 10px; border-radius:999px; border:1px solid rgba(238,241,247,0.28); color:var(--ink); background:rgba(5,6,10,0.45); backdrop-filter:blur(8px); }
+.cs-body{ padding:24px 24px 26px; flex:1; display:flex; flex-direction:column; }
+.cs-eyebrow{ font-family:var(--mono); font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); margin-bottom:8px; }
+.cs-title{ font-family:var(--serif); font-size:21px; font-weight:500; margin-bottom:10px; line-height:1.2; }
+.cs-desc{ font-size:13.5px; color:var(--muted); line-height:1.65; margin-bottom:18px; flex:1; }
+.cs-foot{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:16px; border-top:1px solid var(--line); }
+.cs-agency{ font-family:var(--mono); font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted-2); }
+.cs-agency b{ color:var(--blue-glow); font-weight:600; }
+.cs-btn{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:1px; text-transform:uppercase; color:var(--ink);
+  display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:999px;
+  background:rgba(59,107,255,0.12); border:1px solid rgba(110,161,255,0.3);
+  transition:all .3s var(--ease);
+}
+.cs-btn:hover{ background:var(--blue); border-color:var(--blue); color:#fff; gap:11px; }
+.cs-btn svg{ width:10px; height:10px; }
+@media (max-width:980px){ .cs-grid{ grid-template-columns:repeat(2, 1fr); } }
+@media (max-width:640px){ .cs-grid{ grid-template-columns:1fr; } }
+
+/* ============ ADDED: TOOLS / STACK STRIP ============ */
+.tools-strip{ padding:52px 0 10px; }
+.tools-row{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:44px 56px; padding:36px 20px;
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.tool-item{ display:flex; flex-direction:column; align-items:center; gap:10px; opacity:0.82; transition:opacity .35s ease, transform .35s var(--ease); }
+.tool-item:hover{ opacity:1; transform:translateY(-4px); }
+.tool-item img{ width:42px; height:42px; object-fit:contain; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.35)); }
+.tool-item span{ font-family:var(--mono); font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted-2); }
+html[data-theme="light"] .tool-item img{ filter:drop-shadow(0 4px 10px rgba(16,19,28,0.15)); }
+@media (max-width:640px){ .tools-row{ gap:32px 34px; padding:28px 12px; } .tool-item img{ width:34px; height:34px; } }
 </style>
 </head>
 <body>
@@ -1050,8 +1109,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
     <div class="offer-track">
       <div class="offer-card">
         <div class="offer-idx">01</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+        <div class="offer-icon icon-audit">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"></path><path d="M9 14l2 2 4-4"></path></svg>
         </div>
         <h4 class="offer-title">System Audits</h4>
         <p class="offer-text">We trace manual tasks, data silos, and slow logic to build a prioritized automation roadmap for your team.</p>
@@ -1059,8 +1118,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       </div>
       <div class="offer-card">
         <div class="offer-idx">02</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+        <div class="offer-icon icon-ai">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"></path><rect x="4" y="8" width="16" height="12" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
         </div>
         <h4 class="offer-title">AI Agents</h4>
         <p class="offer-text">Custom bots that process incoming documents, categorize requests, and draft emails matching your guidelines.</p>
@@ -1068,8 +1127,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       </div>
       <div class="offer-card">
         <div class="offer-idx">03</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+        <div class="offer-icon icon-ecom">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 01-8 0"></path></svg>
         </div>
         <h4 class="offer-title">Ecom Architecture</h4>
         <p class="offer-text">Dynamic inventory updates, direct checkout setups, and customized fulfillment triggers that run automatically.</p>
@@ -1077,8 +1136,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       </div>
       <div class="offer-card">
         <div class="offer-idx">04</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+        <div class="offer-icon icon-apps">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
         </div>
         <h4 class="offer-title">Custom Apps</h4>
         <p class="offer-text">Fast web dashboards and portable apps shaped strictly around how your operational team already works.</p>
@@ -1087,8 +1146,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
 
       <div class="offer-card">
         <div class="offer-idx">01</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+        <div class="offer-icon icon-audit">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"></path><path d="M9 14l2 2 4-4"></path></svg>
         </div>
         <h4 class="offer-title">System Audits</h4>
         <p class="offer-text">We trace manual tasks, data silos, and slow logic to build a prioritized automation roadmap for your team.</p>
@@ -1096,8 +1155,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       </div>
       <div class="offer-card">
         <div class="offer-idx">02</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+        <div class="offer-icon icon-ai">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"></path><rect x="4" y="8" width="16" height="12" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>
         </div>
         <h4 class="offer-title">AI Agents</h4>
         <p class="offer-text">Custom bots that process incoming documents, categorize requests, and draft emails matching your guidelines.</p>
@@ -1105,8 +1164,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       </div>
       <div class="offer-card">
         <div class="offer-idx">03</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+        <div class="offer-icon icon-ecom">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 01-8 0"></path></svg>
         </div>
         <h4 class="offer-title">Ecom Architecture</h4>
         <p class="offer-text">Dynamic inventory updates, direct checkout setups, and customized fulfillment triggers that run automatically.</p>
@@ -1114,8 +1173,8 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       </div>
       <div class="offer-card">
         <div class="offer-idx">04</div>
-        <div class="offer-icon">
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+        <div class="offer-icon icon-apps">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
         </div>
         <h4 class="offer-title">Custom Apps</h4>
         <p class="offer-text">Fast web dashboards and portable apps shaped strictly around how your operational team already works.</p>
@@ -1268,6 +1327,337 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
     </div>
   </div>
 </section>
+
+<!-- ============ REAL CASE STUDIES & ACTIVE DEPLOYMENTS ============ -->
+<section id="portfolio">
+  <div class="wrap">
+    
+    <!-- Section Header -->
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag">Active Initiatives &amp; Deployments</div>
+        <h2 class="section-title">Active Builds &amp;<br />Featured Ships.</h2>
+      </div>
+      <p class="section-desc">A curated selection of client platforms, internal software incubations, and live deployments actively engineered and maintained by Codice Solutions.</p>
+    </div>
+
+    <!-- Case Studies Grid with MP4 Video Support -->
+    <div class="cs-grid reveal">
+
+      <!-- Card 1: Codice WorkForce -->
+      <div class="cs-card">
+        <div class="cs-media">
+          <div class="cs-stack"><span>Proprietary Labs</span><span>Full-Stack</span></div>
+          <video class="cs-slideshow-video" autoplay muted playsinline poster="poster1.jpg" data-slideshow="videos/freelance-marketplace-1.mp4,videos/freelance-marketplace-2.mp4,videos/freelance-marketplace-3.mp4">
+            <source src="videos/freelance-marketplace-1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cs-body">
+          <div class="cs-eyebrow">Global Talent Platform</div>
+          <h4 class="cs-title">Codice WorkForce</h4>
+          <p class="cs-desc">A proprietary two-sided marketplace architecture engineered to connect, manage, and dispatch vetted global engineering talent across client builds.</p>
+          <div class="cs-foot">
+            <span class="cs-agency">Built by <b>Codice Solutions</b></span>
+            <button class="offer-more cs-btn" data-modal="elance">Case study <svg viewBox="0 0 10 10" width="10" height="10" fill="none"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Tabib -->
+      <div class="cs-card">
+        <div class="cs-media">
+          <div class="cs-stack"><span>Client Ship</span><span>Healthtech</span></div>
+          <video class="cs-slideshow-video" autoplay muted playsinline poster="poster2.jpg" data-slideshow="videos/tabib-healthtech-1.mp4,videos/tabib-healthtech-2.mp4,videos/tabib-healthtech-3.mp4">
+            <source src="videos/tabib-healthtech-1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cs-body">
+          <div class="cs-eyebrow">Digital Health Identity</div>
+          <h4 class="cs-title">Tabib</h4>
+          <p class="cs-desc">A SaaS electronic health record platform built around a single medical identity, allowing summary, notes, and patient history to be reachable securely anywhere.</p>
+          <div class="cs-foot">
+            <span class="cs-agency">Built by <b>Codice Solutions</b></span>
+            <button class="offer-more cs-btn" data-modal="tabib">Case study <svg viewBox="0 0 10 10" width="10" height="10" fill="none"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Welfare App -->
+      <div class="cs-card">
+        <div class="cs-media">
+          <div class="cs-stack"><span>Active Build</span><span>Python</span></div>
+          <video class="cs-slideshow-video" autoplay muted playsinline poster="poster3.jpg" data-slideshow="videos/welfare-automation-1.mp4,videos/welfare-automation-2.mp4,videos/welfare-automation-3.mp4">
+            <source src="videos/welfare-automation-1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cs-body">
+          <div class="cs-eyebrow">Legal Forms Automation</div>
+          <h4 class="cs-title">Welfare App</h4>
+          <p class="cs-desc">A Python-built tool for a private client that automates manual entry into long welfare and legal forms, replacing repetitive paperwork with a guided workflow.</p>
+          <div class="cs-foot">
+            <span class="cs-agency">Built by <b>Codice Solutions</b></span>
+            <button class="offer-more cs-btn" data-modal="welfare">Case study <svg viewBox="0 0 10 10" width="10" height="10" fill="none"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Nexus AI -->
+      <div class="cs-card">
+        <div class="cs-media">
+          <div class="cs-stack"><span>Proprietary AI</span><span>On-device</span></div>
+          <video class="cs-slideshow-video" autoplay muted playsinline poster="poster4.jpg" data-slideshow="videos/nexus-ai-1.mp4,videos/nexus-ai-2.mp4,videos/nexus-ai-3.mp4">
+            <source src="videos/nexus-ai-1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cs-body">
+          <div class="cs-eyebrow">Private, Offline AI</div>
+          <h4 class="cs-title">Nexus AI</h4>
+          <p class="cs-desc">An offline, personalised AI assistant built in-house by Codice Solutions, giving users private LLM capabilities that run locally without third-party cloud dependence.</p>
+          <div class="cs-foot">
+            <span class="cs-agency">Built by <b>Codice Solutions</b></span>
+            <button class="offer-more cs-btn" data-modal="nexus">Case study <svg viewBox="0 0 10 10" width="10" height="10" fill="none"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: Tabib 3D Site -->
+      <div class="cs-card">
+        <div class="cs-media">
+          <div class="cs-stack"><span>3D / WebGL</span><span>Motion</span></div>
+          <video class="cs-slideshow-video" autoplay muted playsinline poster="poster5.jpg" data-slideshow="videos/tabib-3d-1.mp4,videos/tabib-3d-2.mp4,videos/tabib-3d-3.mp4">
+            <source src="videos/tabib-3d-1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cs-body">
+          <div class="cs-eyebrow">3D Product Experience</div>
+          <h4 class="cs-title">Pulse</h4>
+          <p class="cs-desc">A fully animated 3D website built for the Pulse EHR product, turning a clinical idea into an interactive, memorable first impression.</p>
+          <div class="cs-foot">
+            <span class="cs-agency">Built by <b>Codice Solutions</b></span>
+            <button class="offer-more cs-btn" data-modal="ehr3d">Case study <svg viewBox="0 0 10 10" width="10" height="10" fill="none"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Codice Solutions 3D Site -->
+      <div class="cs-card">
+        <div class="cs-media">
+          <div class="cs-stack"><span>3D / WebGL</span><span>Brand</span></div>
+          <video class="cs-slideshow-video" autoplay muted playsinline poster="poster6.jpg" data-slideshow="videos/codice-3d-1.mp4,videos/codice-3d-2.mp4,videos/codice-3d-3.mp4">
+            <source src="videos/codice-3d-1.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+        <div class="cs-body">
+          <div class="cs-eyebrow">3D Agency Experience</div>
+          <h4 class="cs-title">Argus</h4>
+          <p class="cs-desc">A 3D animated agency website designed to introduce Argus Solutions the same way we build for clients: bold, interactive, and engineered for detail.</p>
+          <div class="cs-foot">
+            <span class="cs-agency">Built by <b>Codice Solutions</b></span>
+            <button class="offer-more cs-btn" data-modal="agency3d">Case study <svg viewBox="0 0 10 10" width="10" height="10" fill="none"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- NDA Disclaimer Note -->
+    <p style="text-align:center; color:var(--muted, #8a99ad); font-size:0.85rem; margin-top:40px; line-height:1.6;">
+      🔒 <em>Enterprise AI pipelines, custom API endpoints, and white-labeled backend infrastructure operate under strict NDA and are omitted from public display.</em>
+    </p>
+
+  </div>
+</section>
+
+<!-- ============ ADDED: TOOLS / STACK STRIP ============ -->
+<section id="stack" class="tools-strip">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-tag">Toolkit</div>
+        <h2 class="section-title">Tools we build with.</h2>
+      </div>
+      <p class="section-desc">The stack behind every product above — the same tools trusted agencies reach for daily.</p>
+    </div>
+
+    <div class="tools-row reveal">
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/figma" alt="Figma" loading="lazy"><span>Figma</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/react" alt="React" loading="lazy"><span>React</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/nextdotjs/eef1f7" alt="Next.js" loading="lazy"><span>Next.js</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js" loading="lazy"><span>Node.js</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/python" alt="Python" loading="lazy"><span>Python</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/postgresql" alt="PostgreSQL" loading="lazy"><span>PostgreSQL</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/mongodb" alt="MongoDB" loading="lazy"><span>MongoDB</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/docker" alt="Docker" loading="lazy"><span>Docker</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/amazonaws/eef1f7" alt="AWS" loading="lazy"><span>AWS</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind CSS" loading="lazy"><span>Tailwind</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/openai/eef1f7" alt="OpenAI" loading="lazy"><span>OpenAI</span></div>
+      <div class="tool-item"><img src="https://cdn.simpleicons.org/github/eef1f7" alt="GitHub" loading="lazy"><span>GitHub</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADDED: CASE STUDY MODALS ============ -->
+<div class="modal-backdrop" id="modal-elance">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAllModals()">&times;</button>
+    <span class="modal-tag">Marketplace</span>
+    <h3>Elance</h3>
+    <p class="lead">Elance connects independent freelancers with clients across the globe. Codice Solutions is building the platform end-to-end: profile and portfolio systems, project matching, messaging, and secure payment handoff, all inside one coherent product.</p>
+    <div class="modal-grid">
+      <div class="modal-block">
+        <h5>Highlights</h5>
+        <ul>
+          <li>Two-sided marketplace for freelancers and global clients</li>
+          <li>Structured onboarding for talent and buyers</li>
+          <li>Built for scale from the first release</li>
+        </ul>
+      </div>
+      <div class="modal-block">
+        <h5>Status</h5>
+        <ul>
+          <li>In active development</li>
+          <li>Engineered by the Codice Solutions team</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-tabib">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAllModals()">&times;</button>
+    <span class="modal-tag">Healthtech · SaaS</span>
+    <h3>Tabib</h3>
+    <p class="lead">Tabib is an electronic health record system built on a SaaS model: every individual gets a personal health summary, notes, and history stored in their own app, accessible anywhere in the world. It functions as a portable medical identity rather than a record locked to a single clinic.</p>
+    <div class="modal-grid">
+      <div class="modal-block">
+        <h5>Highlights</h5>
+        <ul>
+          <li>Personal, portable medical identity per user</li>
+          <li>Health summaries, notes, and history in one place</li>
+          <li>Accessible from any location, on any device</li>
+        </ul>
+      </div>
+      <div class="modal-block">
+        <h5>Focus areas</h5>
+        <ul>
+          <li>Data security and access control</li>
+          <li>Clean, low-friction patient experience</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-welfare">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAllModals()">&times;</button>
+    <span class="modal-tag">Automation · Python</span>
+    <h3>Welfare App</h3>
+    <p class="lead">Built in Python for a private client, this app automates the manual entry work behind long legal and welfare forms. What used to be repetitive, error-prone paperwork is now handled through a guided, automated workflow.</p>
+    <div class="modal-grid">
+      <div class="modal-block">
+        <h5>Highlights</h5>
+        <ul>
+          <li>Automated handling of long, repetitive legal forms</li>
+          <li>Removes manual data entry from the workflow</li>
+          <li>Built specifically around one client's real process</li>
+        </ul>
+      </div>
+      <div class="modal-block">
+        <h5>Stack</h5>
+        <ul>
+          <li>Python automation scripts</li>
+          <li>Custom document and form handling logic</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-nexus">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAllModals()">&times;</button>
+    <span class="modal-tag">Applied AI</span>
+    <h3>Nexus AI</h3>
+    <p class="lead">Nexus AI is an offline, personalised AI model built by Codice Solutions. It's designed to run without relying on a live cloud connection, giving users a private assistant shaped around their own data and context.</p>
+    <div class="modal-grid">
+      <div class="modal-block">
+        <h5>Highlights</h5>
+        <ul>
+          <li>Runs offline, independent of cloud availability</li>
+          <li>Personalised to the individual user</li>
+          <li>Built in-house by Codice Solutions</li>
+        </ul>
+      </div>
+      <div class="modal-block">
+        <h5>Why it matters</h5>
+        <ul>
+          <li>Stronger data privacy by design</li>
+          <li>No dependency on external AI providers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-ehr3d">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAllModals()">&times;</button>
+    <span class="modal-tag">3D / WebGL</span>
+    <h3>Pulse</h3>
+    <p class="lead">A fully animated 3D website built to introduce the Pulse EHR product. Rather than a static landing page, the site uses motion and depth to walk visitors through the idea of a portable medical identity.</p>
+    <div class="modal-grid">
+      <div class="modal-block">
+        <h5>Highlights</h5>
+        <ul>
+          <li>Custom 3D scenes built around the product story</li>
+          <li>Scroll-driven animation and interaction</li>
+          <li>Designed to make a clinical product feel human</li>
+        </ul>
+      </div>
+      <div class="modal-block">
+        <h5>Built for</h5>
+        <ul>
+          <li>Tabib product launch</li>
+          <li>Codice Solutions studio direction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-agency3d">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAllModals()">&times;</button>
+    <span class="modal-tag">3D / WebGL</span>
+    <h3>Argus</h3>
+    <p class="lead">A 3D animated website built to represent Argus Solutions itself: an agency that designs and engineers with the same craft it promises its clients. Every scene and transition is custom-built rather than templated.</p>
+    <div class="modal-grid">
+      <div class="modal-block">
+        <h5>Highlights</h5>
+        <ul>
+          <li>Fully custom 3D-animated agency site</li>
+          <li>Built as a direct showcase of studio capability</li>
+          <li>Interactive, motion-first navigation</li>
+        </ul>
+      </div>
+      <div class="modal-block">
+        <h5>Purpose</h5>
+        <ul>
+          <li>Brand presence for Codice Solutions</li>
+          <li>Reference build for future client 3D projects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section id="inquiry">
   <div class="wrap">
@@ -1816,6 +2206,32 @@ footer{ padding:100px 0 40px; border-top:1px solid var(--line); margin-top:60px;
       }
     });
   }
+
+  // Case Study Video Slideshows — cycles through each project's list of .mp4 clips,
+  // playing one fully before advancing to the next, then looping back to the first forever.
+  // If a listed clip hasn't been uploaded yet (404), falls back to looping the current
+  // clip instead of leaving the card blank.
+  document.querySelectorAll('.cs-slideshow-video[data-slideshow]').forEach(videoEl => {
+    const clips = videoEl.getAttribute('data-slideshow').split(',').map(s => s.trim()).filter(Boolean);
+    if (clips.length <= 1) {
+      // Only one clip available — just loop it like a normal background video.
+      videoEl.loop = true;
+      return;
+    }
+    let clipIndex = 0;
+    const playNext = () => {
+      clipIndex = (clipIndex + 1) % clips.length;
+      videoEl.src = clips[clipIndex];
+      videoEl.play().catch(() => { videoEl.loop = true; });
+    };
+    videoEl.addEventListener('ended', playNext);
+    videoEl.addEventListener('error', () => {
+      // Next clip missing/broken — stop cycling and just loop whatever last loaded successfully.
+      videoEl.removeEventListener('ended', playNext);
+      videoEl.loop = true;
+      videoEl.play().catch(() => {});
+    });
+  });
 
   // FAQ Accordion — expand/collapse question boxes to reveal answers
   document.querySelectorAll('.faq-item').forEach(item => {
